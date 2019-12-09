@@ -1,0 +1,18 @@
+<?php
+$apiKey = "555cf949c037be3ca740ad6e16915c0c";
+$cityId_689531 = "689531";
+$googleApiUrl = "http://api.openweathermap.org/data/2.5/weather?id=" . $cityId_689531 . "&lang=ua&units=metric&APPID=" . $apiKey;
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+$response = curl_exec($ch);
+
+curl_close($ch);
+$data_V = json_decode($response);
+?>
